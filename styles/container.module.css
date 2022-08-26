@@ -1,0 +1,10 @@
+.container {
+  align-items: center;
+  display: flex;
+  flex: 1 1 0%;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 96rem;
+  padding: var(--gutter);
+  width: 100%;
+}

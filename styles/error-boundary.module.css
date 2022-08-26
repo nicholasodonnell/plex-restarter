@@ -1,0 +1,6 @@
+.icon {
+  animation: spin var(--animation-long) linear infinite;
+  color: var(--accent);
+  height: 10rem;
+  width: 10rem;
+}

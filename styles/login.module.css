@@ -1,0 +1,31 @@
+.button {
+  height: 6rem;
+  width: 24rem;
+}
+
+.spinner {
+  animation: spin var(--animation-long) linear infinite;
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+  color: var(--accent);
+  height: 7rem;
+  width: 7rem;
+}
+
+.spinner__bar {
+  opacity: 0.25;
+}
+
+.spinner__rail {
+  opacity: 1;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

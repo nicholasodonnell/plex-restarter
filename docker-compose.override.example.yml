@@ -1,0 +1,17 @@
+version: "3.5"
+services:
+
+  app:
+    build:
+      target: dev
+    env_file:
+      - .env
+    image: nicholasodonnell/plex-restarter:dev
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/app
+      - node-modules:/app/node_modules
+
+volumes:
+  node-modules:

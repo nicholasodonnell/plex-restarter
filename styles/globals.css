@@ -1,0 +1,88 @@
+:root {
+  /* colors */
+  --white: #FFFFFF;
+  --gray-1: #E4EBF5;
+  --gray-2: #c8d0e7;
+  --gray-3: #9baacf;
+  --accent: #6d5dfc;
+
+  /* fonts */
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  --font-size-base: 1.6rem;
+  --font-size-large: 3.2rem;
+
+  /* spacing */
+  --gutter: 1.5rem;
+
+  /* ui */
+  --shadow: 0.3rem 0.3rem 0.6rem var(--gray-2), -0.2rem -0.2rem 0.5rem var(--white);
+  --inner-shadow: inset 0.2rem 0.2rem 0.5rem var(--gray-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+
+  /* animations */
+  --animation-short: 0.3s;
+  --animation-long: 3s;
+}
+
+html,
+body {
+  font-family: var(--font-family-sans-serif);
+}
+
+html {
+  background-color: var(--gray-1);
+  /* 1rem = 10px */
+  font-size: 62.5%;
+}
+
+body,
+#__next {
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100vw;
+}
+
+/* account for safari nav bar */
+@supports (-webkit-touch-callout: none) {
+  body {
+    height: -webkit-fill-available;
+  }
+}
+
+/* reset */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+
+  background: transparent;
+
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
+
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
+}
