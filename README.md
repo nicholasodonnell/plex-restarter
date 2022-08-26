@@ -2,7 +2,7 @@
   <img src="assets/banner.png" />
 </center>
 
-[![Lint](https://github.com/nicholasodonnell/plex-restarter/actions/workflows/lint.yml/badge.svg?branch=main)](https://github.com/nicholasodonnell/plex-restarter/actions/workflows/lint.yml)
+[![Publish](https://github.com/nicholasodonnell/plex-restarter/actions/workflows/publish.yml/badge.svg?branch=main)](https://github.com/nicholasodonnell/plex-restarter/actions/workflows/publish.yml)
 
 **Plex Restarter** lets your friends restart your Plex Media Server remotely with a click of a button.
 
@@ -16,7 +16,7 @@
 
 ## Production
 
-Production image can be built manually by running: `docker-compose -f docker-compose.yml build`.
+Pushes to the `main` brunch will be published to [Github Packages](https://github.com/nicholasodonnell/plex-restarter/pkgs/container/plex-restarter). Production image can be built manually by running: `docker-compose -f docker-compose.yml build`.
 
 ## Usage
 
@@ -24,12 +24,11 @@ Production image can be built manually by running: `docker-compose -f docker-com
 docker run --rm \
   --name plex-restarter \
   -p 3000:3000 \
-  -e HOST=https://example.com \
-  -e SIGNING_SECRET=example \
+  -e SIGNING_SECRET=secret \
   -e PLEX_CLIENT_ID=example \
   -e PLEX_HOSTNAME=plex.example.com \
-  -e RESTART_COMMAND=service plexmediaserver restart \
-  nicholasodonnell/plex-restarter:latest
+  -e RESTART_COMMAND="service plexmediaserver restart" \
+  ghcr.io/nicholasodonnell/plex-restarter:latest
 ```
 
 ## ENV Options

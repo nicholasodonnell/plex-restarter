@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 import Button from '../../components/button'
 import Container from '../../components/container'
@@ -6,24 +6,18 @@ import { useLogin, useLogout } from '../../context/useAuth'
 import classNames from '../../styles/login.module.css'
 
 export default () => {
-  const [ active, setActive ] = useState(false)
-  const login = useLogin()
-  const logout = useLogout()
+  const { loading, login } = useLogin()
+  const { logout } = useLogout()
 
   useEffect(logout, [ logout ])
-
-  const handleLogin = useCallback(() => {
-    setActive(true)
-    login()
-  }, [ login ])
 
   return (
     <Container>
       <Button
-        active={active}
+        active={loading}
         className={classNames.button}
-        disabled={active}
-        onClick={handleLogin}
+        disabled={loading}
+        onClick={login}
       >
           Log In with Plex
       </Button>

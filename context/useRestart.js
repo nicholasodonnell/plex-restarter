@@ -1,19 +1,18 @@
-import Router from 'next/router'
 import { useCallback, useState } from 'react'
 
 import fetch from '../lib/fetch'
 
-const execRequest = fetch('/exec', { method: 'POST' })
+const restartRequest = fetch('/restart', { method: 'POST' })
 
 export default () => {
   const [ loading, setLoading ] = useState(false)
 
-  const cb = useCallback(() =>
+  const restart = useCallback(() =>
     Promise.resolve()
       .then(() => setLoading(true))
-      .then(execRequest)
+      .then(restartRequest)
       .finally(() => setLoading(false))
   , [])
 
-  return { cb, loading }
+  return { loading, restart }
 }

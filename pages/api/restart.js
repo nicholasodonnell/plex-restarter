@@ -24,7 +24,7 @@ export default async (req, res) => {
     res.status(200).json({ successful: true })
   } catch (e) {
     res.status(500).json({
-      message: 'Failed to exec',
+      message: 'Failed to restart',
     })
   }
 }

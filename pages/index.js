@@ -1,21 +1,19 @@
-import { useCallback, useState } from 'react'
-
 import Button from '../components/button'
-import useExec from '../context/useExec'
+import useRestart from '../context/useRestart'
 import cookies from '../lib/cookies'
 import { decode } from '../lib/jwt'
 import { API } from '../lib/plex'
 import classNames from '../styles/home.module.css'
 
 export default () => {
-  const { cb, loading } = useExec()
+  const { loading, restart } = useRestart()
 
   return (
     <Button
       active={loading}
       className={classNames.button}
       disabled={loading}
-      onClick={cb}
+      onClick={restart}
       rounded
       spin
     >

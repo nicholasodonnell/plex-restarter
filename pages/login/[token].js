@@ -6,7 +6,7 @@ import { Oauth } from '../../lib/plex'
 import classNames from '../../styles/login.module.css'
 
 export default ({ token }) => {
-  const auth = useAuth()
+  const { auth } = useAuth()
 
   useEffect(() => {
     auth(token)

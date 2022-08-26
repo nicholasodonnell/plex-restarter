@@ -7,7 +7,7 @@ services:
     expose:
       - 3000
     container_name: plex-restarter
-    image: nicholasodonnell/plex-restarter:latest
+    image: ghcr.io/nicholasodonnell/plex-restarter:latest
     networks:
       - plex-restarter
 
