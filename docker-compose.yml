@@ -10,6 +10,7 @@ services:
     image: ghcr.io/nicholasodonnell/plex-restarter:latest
     networks:
       - plex-restarter
+    privileged: true
 
 networks:
   plex-restarter:

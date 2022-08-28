@@ -9,7 +9,9 @@ export default () => {
   const { loading, login } = useLogin()
   const { logout } = useLogout()
 
-  useEffect(logout, [ logout ])
+  useEffect(() => {
+    logout()
+  }, [ logout ])
 
   return (
     <Container>

@@ -22,16 +22,21 @@ export const useLogin = () => {
 }
 
 export const useAuth = () => {
-  const auth = useCallback(token => {
-    setSessionTokenCookie(token)
-    Router.push('/')
-  }, [])
+  const auth = useCallback(token =>
+    Promise.resolve(token)
+      .then(setSessionTokenCookie)
+      .then(() => Router.push('/'))
+  , [])
 
   return { auth }
 }
 
-export const useLogout = () => {
-  const logout = useCallback(removeSessionTokenCookie, [ ])
+export const useLogout = ({ reload = false } = {}) => {
+  const logout = useCallback(() =>
+    Promise.resolve()
+      .then(removeSessionTokenCookie)
+      .then(() => reload && Router.push('/'))
+  , [ reload ])
 
   return { logout }
 }
