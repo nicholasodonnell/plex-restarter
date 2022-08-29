@@ -21,6 +21,8 @@ export default async (req, res) => {
 
     await exec(env.RESTART_COMMAND)
 
+    console.log(`Plex restarted by ${user?.email} on ${new Date()}`)
+
     res.status(200).json({ successful: true })
   } catch (e) {
     res.status(500).json({
