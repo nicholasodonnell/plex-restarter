@@ -33,10 +33,10 @@ After installation you will be promoted to log into your Plex account. These cre
 
 ### Persistience
 
-Upon successful installation a `config.json` file will be created. Simply mount this file into your container to persist the installation state:
+Upon successful installation a `./config/config.json` file will be created. Simply mount this directory into your container to persist the installation state:
 
 ```console
-docker run ... -v ./config.json:/app/config.json
+docker run ... -v ./config:/app/config
 ```
 
 ### Restart Command
@@ -74,7 +74,7 @@ docker run --rm \
   --name plex-restarter \
   --privileged \
   -p 3000:3000 \
-  -v ./config.json:/app/config.json \
+  -v ./config:/app/config \
   -v /var/run/docker.sock:/var/run/docker.sock:ro \
   ghcr.io/nicholasodonnell/plex-restarter:latest
 ```

@@ -14,4 +14,4 @@ docker-compose.override.yml
 
 ## production
 /build
-config.json
+/config/config.json
