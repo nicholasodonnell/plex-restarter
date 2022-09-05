@@ -4,6 +4,7 @@
   border-radius: 1rem;
   box-shadow: var(--shadow);
   color: var(--gray-3);
+  cursor: pointer;
   display: flex;
   font-size: var(--font-size-base);
   justify-content: center;

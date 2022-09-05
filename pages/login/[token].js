@@ -25,16 +25,18 @@ export const getServerSideProps = async ctx => {
     const { token: credentialsToken } = ctx.params
     const credentials = decode(credentialsToken)
 
-    const oauth = new Oauth(credentials)
-    const { authToken, email, friendlyName, username } = await oauth.getUserInfo()
+    const oauth = new Oauth({ credentials })
+    const { authToken, email, friendlyName, id, username } = await oauth.getUserInfo()
 
-    const user = { authToken, email, friendlyName, username }
+    const user = { authToken, email, friendlyName, id, username }
     const token = encode(user)
+
+    console.log('logged in', { email: user.email })
 
     return {
       props: { token },
     }
   } catch (e) {
-    throw new Error('Failed to fetch user info', { cause: e })
+    throw new Error('failed to initialize /login/:token', { cause: e })
   }
 }

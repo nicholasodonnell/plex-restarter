@@ -1,6 +1,18 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .icon {
   animation: spin var(--animation-long) linear infinite;
   color: var(--accent);
   height: 10rem;
   width: 10rem;
+}
+
+.message {
+  margin-top: var(--gutter);
+  font-family: monospace;
 }

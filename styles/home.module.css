@@ -1,17 +1,3 @@
-.logoutButton {
-  color: var(--accent);
-  height: 5rem;
-  width: 5rem;
-  position: absolute;
-  top: var(--gutter);
-  right: var(--gutter);
-}
-
-.logoutButton__icon {
-  height: 2.5rem;
-  width: 2.5rem;
-}
-
 .restartButton {
   color: var(--accent);
   height: 15rem;
@@ -21,4 +7,24 @@
 .restartButton__icon {
   height: 7rem;
   width: 7rem;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  right: var(--gutter);
+  top: var(--gutter);
+}
+
+.actionButton {
+  color: var(--accent);
+  height: 5rem;
+  margin-left: var(--gutter);
+  width: 5rem;
+}
+
+.actionButton__icon {
+  height: 2.5rem;
+  width: 2.5rem;
 }

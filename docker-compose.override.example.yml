@@ -4,8 +4,6 @@ services:
   app:
     build:
       target: dev
-    env_file:
-      - .env
     image: ghcr.io/nicholasodonnell/plex-restarter:dev
     ports:
       - 3000:3000

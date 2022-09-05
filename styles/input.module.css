@@ -1,0 +1,131 @@
+.input {
+  height: 7rem;
+  position: relative;
+  width: 100%;
+}
+
+.input__field {
+  background: none;
+  border-radius: 1rem;
+  border: none;
+  box-shadow: var(--inner-shadow);
+  color: var(--gray-4);
+  font-family: inherit;
+  font-size: var(--font-size-medium);
+  height: 100%;
+  left: 0;
+  padding: 3rem 2rem 2rem 2rem;
+  position: absolute;
+  top: 0;
+  transition: box-shadow var(--animation-short) ease-in-out;
+  width: 100%;
+}
+
+.input__field::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+.input__field::-webkit-outer-spin-button,
+.input__field::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input__field:focus {
+  box-shadow: var(--inner-shadow) !important;
+  outline: none;
+}
+
+/* when input not active */
+.input__field:placeholder-shown {
+  box-shadow: var(--shadow);
+}
+
+.input__field:placeholder-shown + .input__label {
+  color: var(--gray-4);
+  font-size: var(--font-size-medium);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+ /* always */
+.input__label {
+  font-family: var(--font-family-sans-serif);
+  left: 2rem;
+  pointer-events: none;
+  position: absolute;
+  transition: font-size var(--animation-short) ease-in-out,
+    top var(--animation-short) ease-in-out,
+    transform var(--animation-short) ease-in-out;
+}
+
+/* when input is focused */
+.input__label,
+.input__field:focus + .input__label {
+  color: var(--accent);
+  font-size: var(--font-size-small);
+  top: 0.8rem;
+  transform: translateY(0);
+}
+
+.switch {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.switch__input {
+  display: none;
+}
+
+.switch__input:checked + .switch__label:before {
+  opacity: 1;
+}
+
+.switch__input:checked + .switch__label:after {
+  left: calc(100% - 3.5rem);
+  background: var(--gray-1);
+}
+
+.switch__label {
+  align-items: center;
+  background: var(--black);
+  border-radius: 2rem;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  display: flex;
+  height: 4rem;
+  margin-top: auto;
+  position: relative;
+  width: 100%;
+}
+
+.switch__label:before,
+.switch__label:after {
+  content: '';
+}
+
+.switch__label:before {
+  background: linear-gradient(330deg, var(--accent-dark) 0%, var(--accent) 50%, var(--accent-light) 100%);
+  border-radius: inherit;
+  height: 100%;
+  opacity: 0;
+  transition: all .4s ease;
+  width: 100%;
+}
+
+.switch__label:after {
+  background: var(--gray-3);
+  border-radius: 50%;
+  height: 3rem;
+  left: 0.5rem;
+  position: absolute;
+  transition: all var(--animation-short) ease;
+  width: 3rem;
+}
+
+.switch__placeholder {
+  color: var(--accent);
+  font-size: var(--font-size-small);
+}

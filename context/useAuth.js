@@ -15,7 +15,7 @@ export const useLogin = () => {
     Promise.resolve()
       .then(() => setLoading(true))
       .then(loginRequest)
-      .then(({ loginUrl }) => location.replace(loginUrl))
+      .then(({ loginUrl }) => location.href = loginUrl)
   , [])
 
   return { loading, login }

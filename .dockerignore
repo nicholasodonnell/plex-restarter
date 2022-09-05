@@ -10,8 +10,8 @@ yarn-error.log*
 .vercel
 
 ## docker
-.env
 docker-compose.override.yml
 
 ## production
 /build
+config.json

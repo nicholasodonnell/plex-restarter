@@ -1,0 +1,29 @@
+.wrapper {
+  display: grid;
+  gap: calc(var(--gutter) * 2);
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  width: 100%;
+}
+
+.plexInputGroup {
+  display: grid;
+  gap: calc(var(--gutter) * 2);
+  grid-template-columns: repeat(14, minmax(0, 1fr));
+}
+
+.plexInputGroup__2 {
+  grid-column: span 6 / span 6;
+}
+
+.plexInputGroup__1 {
+  grid-column: span 2 / span 2;
+}
+
+.restartCommand {
+  font-family: monospace;
+}
+
+.loginButton {
+  background-color: var(--accent);
+  color: var(--white);
+}

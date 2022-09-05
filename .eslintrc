@@ -40,7 +40,7 @@
     "max-len": "off",
     "no-console": "off",
     "no-undef": 2,
-    "no-unused-expressions": 2,
+    "no-unused-expressions": [ "error", { "allowTernary": true} ],
     "no-unused-vars": 2,
     "object-curly-newline": "off",
     "object-curly-spacing": [ "error", "always" ],
