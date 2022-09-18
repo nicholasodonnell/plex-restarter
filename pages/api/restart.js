@@ -19,6 +19,12 @@ export default async (req, res) => {
       })
     }
 
+    if (!config.RESTART_COMMAND) {
+      return res.status(500).json({
+        message: 'restart command not configured',
+      })
+    }
+
     const stdout = await exec(config.RESTART_COMMAND)
     console.log(`plex restarted by ${user?.email} on ${new Date()}`, { stdout })
 
