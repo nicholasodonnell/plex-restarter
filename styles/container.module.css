@@ -5,6 +5,7 @@
   justify-content: center;
   margin: 0 auto;
   max-width: 96rem;
+  overflow: hidden;
   padding: var(--gutter);
   position: relative;
   width: 100%;

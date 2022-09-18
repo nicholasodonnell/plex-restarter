@@ -4,6 +4,8 @@ services:
   app:
     build:
       target: dev
+    environment:
+      - "RESTART_COMMAND=exit 0"
     image: ghcr.io/nicholasodonnell/plex-restarter:dev
     ports:
       - 3000:3000

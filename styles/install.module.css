@@ -5,25 +5,36 @@
   width: 100%;
 }
 
-.plexInputGroup {
+.inputGroup {
   display: grid;
   gap: calc(var(--gutter) * 2);
   grid-template-columns: repeat(14, minmax(0, 1fr));
+  width: 100%;
+  flex-wrap: wrap;
 }
 
-.plexInputGroup__2 {
-  grid-column: span 6 / span 6;
+.plexHostname {
+  grid-column: span 14 / span 14;
 }
 
-.plexInputGroup__1 {
-  grid-column: span 2 / span 2;
+.plexPort {
+  grid-column: span 9 / span 9;
 }
 
-.restartCommand {
-  font-family: monospace;
+.plexUseHttps {
+  grid-column: span 5 / span 5;
 }
 
-.loginButton {
-  background-color: var(--accent);
-  color: var(--white);
+@media (min-width: 768px) {
+  .plexHostname {
+    grid-column: span 8 / span 8;
+  }
+
+  .plexPort {
+    grid-column: span 4 / span 4;
+  }
+
+  .plexUseHttps {
+    grid-column: span 2 / span 2;
+  }
 }

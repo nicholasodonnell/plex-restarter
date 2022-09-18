@@ -13,6 +13,7 @@
 }
 
 .message {
-  margin-top: var(--gutter);
   font-family: monospace;
+  margin-top: var(--gutter);
+  text-transform: uppercase;
 }

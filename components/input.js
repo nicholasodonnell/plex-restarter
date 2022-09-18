@@ -1,47 +1,53 @@
 import cx from 'classnames'
-import { useCallback } from 'react'
+import { identity } from 'ramda'
 
 import classNames from '../styles/input.module.css'
 
 export const Input = ({
   className,
+  disabled,
   label = '',
   name,
   onChange,
+  transform = identity,
   type = 'text',
-  value,
-}) => (
-  <div className={cx(classNames.input, className)}>
-    <input
-      className={classNames.input__field}
-      id={name}
-      name={name}
-      onChange={onChange}
-      placeholder={label}
-      type={type}
-      value={value || ''}
-    />
-    <label
-      className={classNames.input__label}
-      htmlFor={name}
-    >
-      {label}
-    </label>
-  </div>
-)
+  value ,
+}) => {
+  const handleChange = e =>
+    onChange?.(transform(e.target.value))
+
+  return (
+    <div className={cx(classNames.input, className)}>
+      <input
+        className={classNames.input__field}
+        disabled={disabled}
+        id={name}
+        name={name}
+        onChange={handleChange}
+        placeholder={label}
+        type={type}
+        value={value || ''}
+      />
+      <label
+        className={classNames.input__label}
+        htmlFor={name}
+      >
+        {label}
+      </label>
+    </div>
+  )
+}
 
 export const Switch = ({
   className,
+  disabled,
   label = '',
   name,
   onChange,
   value,
 }) => {
-  const handleChange = useCallback(e => {
-    e.target.value = e.target.checked
-
-    onChange?.(e)
-  }, [ onChange ])
+  const handleChange = e =>
+    onChange?.(e.target.checked)
 
   return (
     <div className={cx(classNames.switch, className)}>
@@ -51,7 +57,8 @@ export const Switch = ({
         {label}
       </label>
       <input
-        checked={value === 'true'}
+        checked={!!value}
+        disabled={disabled}
         className={classNames.switch__input}
         id={name}
         name={name}

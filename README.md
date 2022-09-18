@@ -19,17 +19,15 @@ Pushes to the `main` brunch will be published to [Github Packages](https://githu
 
 ## Usage
 
-The first time you run this app you will be greeted with an installation screen to set the following config options:
-
+The first time you run this app you will be greeted with an installation screen to set some config values. Alternatively, you can provide these values as environmental variables.
 
 | Option            | Description                                                   |
 | ----------------- | ------------------------------------------------------------- |
-| `Plex Hostname`   | Hostname where Plex Server runs (without http(s))             |
-| `Plex Port`       | Port number Plex Server is listening on                       |
-| `Use SSL`         | Connect to plex using a secure connection                     |
-| `Restart Command` | Command that restarts the server (see below for more details) |
+| `PLEX_HOSTNAME`   | Hostname where Plex Server runs (without http(s))             |
+| `PLEX_PORT`       | Port number Plex Server is listening on                       |
+| `PLEX_USE_HTTPS`  | Connect to plex using a secure connection                     |
 
-After installation you will be promoted to log into your Plex account. These credentials **must be the server admin**. The users of this admin's Plex account will be allowed to log in to restart the server.
+After installation you will be prompted to log into your Plex account. These credentials **must be the server admin**.
 
 ### Persistience
 
@@ -40,6 +38,8 @@ docker run ... -v ./config:/app/config
 ```
 
 ### Restart Command
+
+You **must** set a `RESTART_COMMAND` environmental variable. This command is what restarts your Plex server.
 
 In order to execute a command on the host machine from the `plex-restarter` container, you can do 1 of 2 things:
 
@@ -53,7 +53,7 @@ The simpliest way if you have Plex running as a Docker container is to use the D
 RESTART_COMMAND="docker restart plex"
 ```
 
-Alternatively, you can spawn a separate Docker container to send commands to the host a la a reverse shell (this is probably a really, really bad idea):
+Alternatively, you can spawn a separate Docker container to send commands to the host via a reverse shell (this is probably a really, really bad idea):
 
 ```console
 RESTART_COMMAND="docker run -it --rm --privileged --pid host debian nsenter -t 1 -m -u -n -i bash -c \"service restart plex\""
@@ -61,7 +61,7 @@ RESTART_COMMAND="docker run -it --rm --privileged --pid host debian nsenter -t 1
 
 #### Named Pipe
 
-You can use a **named pipe** to execute commands on a host machine. The TL;DR is to create a file on the host + a script to loop and eval commands from that file. Simply mount that file into the container with a volume and write to it. Read more about named pipes [here](https://codeutility.org/how-to-run-shell-script-on-host-from-docker-container-stack-overflow/).
+You can use a **named pipe** to execute commands on the host machine. The TL;DR is to create a file on the host + a script to loop and eval commands from that file. Simply mount that file into the container with a volume and write to it. Read more about named pipes [here](https://codeutility.org/how-to-run-shell-script-on-host-from-docker-container-stack-overflow/).
 
 ```console
 RESTART_COMMAND="echo \"service restart plex\" > /path/to/named/pipe.txt"
@@ -73,6 +73,7 @@ RESTART_COMMAND="echo \"service restart plex\" > /path/to/named/pipe.txt"
 docker run --rm \
   --name plex-restarter \
   --privileged \
+  -e "RESTART_COMMAND=docker restart plex" \
   -p 3000:3000 \
   -v ./config:/app/config \
   -v /var/run/docker.sock:/var/run/docker.sock:ro \
