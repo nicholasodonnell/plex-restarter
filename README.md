@@ -75,7 +75,7 @@ docker run --rm \
   --privileged \
   -e "RESTART_COMMAND=docker restart plex" \
   -p 3000:3000 \
-  -v ./config:/app/config \
+  -v $(PWD)/config:/app/config \
   -v /var/run/docker.sock:/var/run/docker.sock:ro \
   ghcr.io/nicholasodonnell/plex-restarter:latest
 ```
