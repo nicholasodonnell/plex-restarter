@@ -24,7 +24,6 @@ export default async (req, res) => {
     config.PLEX_PORT = PLEX_PORT
     config.PLEX_USE_HTTPS = PLEX_USE_HTTPS
     config.SIGNING_SECRET = uuidv4()
-    config.PLEX_CLIENT_ID = uuidv4()
 
     console.log('successfully installed')
 
